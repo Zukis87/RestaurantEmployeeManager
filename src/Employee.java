@@ -1,44 +1,16 @@
-public abstract class Employee {
-	public String name;
-	public int id;
-	public int salary;
-	
-	public Employee(String name, int id, int salary) {
-		super();
-		this.name = name;
-		this.id = id;
-		this.salary = salary;
-	}
+public interface Employee {
 
+	public void add(Employee employee);
 
-	public String getName() {
-		return name;
-	}
+	public void remove(Employee employee);
 
+	public Employee getChild(int i);
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public int getId();
 
+	public String getName();
 
-	public int getId() {
-		return id;
-	}
+	public double getSalary();
 
-
-	public int getSalary() {
-		return salary;
-	}
-
-
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Employe [Name=" + name + ", id=" + id + ", Salary=" + salary + "]";
-	}
-	
+	public void print();
 }
