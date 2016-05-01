@@ -36,9 +36,11 @@ public interface Employee {
 
 	public String getFullName();
 
-	public int getHoursWorked();
-
-	public void addHoursWorked(int hoursWorked);
+	public double getHoursWorked();
+	
+	public void setHoursWorked(double hoursWorked);
+	
+	public void addHoursWorked(double hoursWorked);
 
 	public void acceptEmployeeVisitor(EmployeesVisitor visitor);
 

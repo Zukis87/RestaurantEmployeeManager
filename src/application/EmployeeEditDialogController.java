@@ -29,6 +29,8 @@ public class EmployeeEditDialogController {
 	private ComboBox<EmployeeType> typeCB;
 	@FXML
 	private TextField birthdayField;
+	@FXML
+	private TextField totalHoursField;
 	// private DatePicker birthdayDatePicker;
 
 	private Stage dialogStage;
@@ -61,13 +63,9 @@ public class EmployeeEditDialogController {
 	 */
 	public void newEmployee() {
 		isNew = true;
-		firstNameField.setText("");
-		lastNameField.setText("");
-		addressField.setText("");
-		phoneField.setText("");
-		birthdayField.setText("");
 		List<EmployeeType> types = new ArrayList<>(Arrays.asList(EmployeeType.values()));
 		types.remove(EmployeeType.Chef);
+		totalHoursField.setDisable(true);
 		typeCB.setItems(FXCollections.observableArrayList(types));
 	}
 
@@ -78,6 +76,7 @@ public class EmployeeEditDialogController {
 		addressField.setText(employee.getAddress());
 		phoneField.setText(employee.getPhone());
 		birthdayField.setText(employee.getBirthday());
+		totalHoursField.setText(Double.toString(employee.getHoursWorked()));
 		List<EmployeeType> types = new ArrayList<>(Arrays.asList(EmployeeType.values()));
 		types.remove(EmployeeType.Chef);
 		typeCB.setItems(FXCollections.observableArrayList(types));
@@ -113,6 +112,7 @@ public class EmployeeEditDialogController {
 				employee.setAddress(addressField.getText());
 				employee.setPhone(phoneField.getText());
 				employee.setBirthday(birthdayField.getText());
+				employee.setHoursWorked(Double.parseDouble(totalHoursField.getText()));
 				employee = factory.changeEmployeeType(employee, typeCB.getValue());
 			}
 			okClicked = true;

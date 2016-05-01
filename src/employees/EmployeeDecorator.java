@@ -72,11 +72,14 @@ public abstract class EmployeeDecorator implements Employee{
 	public String getFullName(){
 		return employeeToBeDecorated.getFullName();
 	}
-	public int getHoursWorked() {
+	public double getHoursWorked() {
 		return employeeToBeDecorated.getHoursWorked();
 	}
 
-	public void addHoursWorked(int hoursWorked) {
+	public void addHoursWorked(double hoursWorked) {
 		employeeToBeDecorated.addHoursWorked(hoursWorked);
+	}
+	public void setHoursWorked(double hoursWorked) {
+		employeeToBeDecorated.setHoursWorked(hoursWorked);
 	}
 }

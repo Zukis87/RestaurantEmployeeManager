@@ -30,6 +30,8 @@ public class MainApp extends Application {
 				EmployeeType.Chef));
 		employeeData.add(factory.createEmployee("Zuki", "Sarusi", "0523874254", "Arlozorov 33 Herzliya", "30/12/1987",
 				EmployeeType.BarManager));
+		employeeData.add(factory.createEmployee("Lolo", "Acid", "0522444454", "Arlozorov 1 Tel-Aviv", "03/02/1998",
+				EmployeeType.ShiftManager));
 
 	}
 

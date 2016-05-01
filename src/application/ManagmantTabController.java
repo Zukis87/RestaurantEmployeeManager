@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class ManagmantTabController {
 	@FXML
@@ -42,6 +43,10 @@ public class ManagmantTabController {
 	@FXML
 	private Label allEmployeesLable;
 	@FXML
+	private Label totalHoursLable;
+	@FXML
+	private TextField hoursField;
+	@FXML
 	private ComboBox<EmployeeType> employeeTypeComboBox;
 
 	// Reference to the main application.
@@ -68,7 +73,6 @@ public class ManagmantTabController {
 		typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().name()));
 		// Clear employee details.
 		showEmployeeDetails(null);
-
 		// Listen for selection changes and show the employee details when
 		// changed.
 		employeeTable.getSelectionModel().selectedItemProperty()
@@ -90,6 +94,7 @@ public class ManagmantTabController {
 			birthdayLabel.setText(employee.getBirthday());
 			idLabel.setText(Integer.toString(employee.getId()));
 			typeLabel.setText(employee.getType().name());
+			totalHoursLable.setText(Double.toString(employee.getHoursWorked()));
 			currentEmployeeLable.setText(Integer.toString(getCurrentEmployeeSalary()));
 			employeeTypeComboBox.setValue(employee.getType());
 
@@ -105,6 +110,7 @@ public class ManagmantTabController {
 			idLabel.setText("");
 			typeLabel.setText("");
 			currentEmployeeLable.setText("");
+			totalHoursLable.setText("");
 			employeeTypeComboBox.setValue(EmployeeType.Waiter);
 		}
 	}
@@ -124,21 +130,25 @@ public class ManagmantTabController {
 				employeeTable.getItems().remove(selectedIndex);
 			}
 		} else {
-			// Nothing selected.
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.initOwner(mainApp.getPrimaryStage());
-			alert.setTitle("No Selection");
-			alert.setHeaderText("No Employee Selected");
-			alert.setContentText("Please select a employee in the table.");
-			alert.showAndWait();
+			alertNoSelection();
 		}
+	}
+
+	private void alertNoSelection() {
+		// Nothing selected.
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.initOwner(mainApp.getPrimaryStage());
+		alert.setTitle("No Selection");
+		alert.setHeaderText("No Employee Selected");
+		alert.setContentText("Please select a employee in the table.");
+		alert.showAndWait();
 	}
 
 	@FXML
 	private void handleNewEmployee() {
-		Employee returndEmploy = mainApp.showEmployeeEditDialog(true, null);
-		if (returndEmploy != null) {
-			mainApp.getEmployeeData().add(returndEmploy);
+		Employee returndEmployee = mainApp.showEmployeeEditDialog(true, null);
+		if (returndEmployee != null) {
+			mainApp.getEmployeeData().add(returndEmployee);
 		}
 	}
 
@@ -150,20 +160,14 @@ public class ManagmantTabController {
 	private void handleEditEmployee() {
 		Employee selectedEmployee = employeeTable.getSelectionModel().getSelectedItem();
 		if (selectedEmployee != null) {
-			Employee returndEmploy = mainApp.showEmployeeEditDialog(false, selectedEmployee);
-			if (returndEmploy != null) {
+			Employee returndEmployee = mainApp.showEmployeeEditDialog(false, selectedEmployee);
+			if (returndEmployee != null) {
 				showEmployeeDetails(selectedEmployee);
 				employeeTable.refresh();
 			}
 
 		} else {
-			// Nothing selected.
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.initOwner(mainApp.getPrimaryStage());
-			alert.setTitle("No Selection");
-			alert.setHeaderText("No Employee Selected");
-			alert.setContentText("Please select a employee in the table.");
-			alert.showAndWait();
+			alertNoSelection();
 		}
 	}
 
@@ -200,6 +204,19 @@ public class ManagmantTabController {
 	private void handleCalculateSalaries() {
 		allEmployeesLable.setText(Integer.toString(getAllEmployeesSalary()));
 		employeeByTypeLable.setText(Integer.toString(getEmployeesSalaryByType(employeeTypeComboBox.getValue())));
+	}
+
+	@FXML
+	private void handleAddHours() {
+		Employee selectedEmployee = employeeTable.getSelectionModel().getSelectedItem();
+		if (selectedEmployee != null) {
+			selectedEmployee.addHoursWorked(Double.parseDouble(hoursField.getText()));
+			hoursField.setText("");
+			showEmployeeDetails(selectedEmployee);
+			employeeTable.refresh();
+		} else {
+			alertNoSelection();
+		}
 	}
 
 	public void setMainApp(MainApp mainApp) {

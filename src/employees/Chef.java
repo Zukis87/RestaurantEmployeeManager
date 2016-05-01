@@ -8,7 +8,7 @@ public class Chef implements Employee {
 	private String phone;
 	private String address;
 	private String birthday;
-	private int totalHoursWorked;
+	private double totalHoursWorked;
 	private EmployeeType type = EmployeeType.Chef;
 	private double salary = type.getSalary();
 
@@ -99,11 +99,16 @@ public class Chef implements Employee {
 		return firstName + " " + lastName;
 	}
 
-	public int getHoursWorked() {
+	public double getHoursWorked() {
 		return totalHoursWorked;
 	}
 
-	public void addHoursWorked(int hoursWorked) {
+	public void setHoursWorked(double hoursWorked) {
+		this.totalHoursWorked = hoursWorked;
+	}
+
+	public void addHoursWorked(double hoursWorked) {
 		this.totalHoursWorked += hoursWorked;
 	}
+
 }

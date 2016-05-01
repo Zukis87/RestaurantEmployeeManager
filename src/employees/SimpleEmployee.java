@@ -10,7 +10,7 @@ public class SimpleEmployee implements Employee {
 	private String birthday;
 	private double salary;
 	private EmployeeType type;
-	private int totalHoursWorked;
+	private double totalHoursWorked;
 
 	public SimpleEmployee(int id, String firstName, String lastName, String phone, String address, String birthday,
 			EmployeeType type) {
@@ -107,11 +107,15 @@ public class SimpleEmployee implements Employee {
 		visitor.visit(this);
 	}
 
-	public int getHoursWorked() {
+	public double getHoursWorked() {
 		return totalHoursWorked;
 	}
 
-	public void addHoursWorked(int hoursWorked) {
+	public void setHoursWorked(double hoursWorked) {
+		this.totalHoursWorked = hoursWorked;
+	}
+
+	public void addHoursWorked(double hoursWorked) {
 		this.totalHoursWorked += hoursWorked;
 	}
 
