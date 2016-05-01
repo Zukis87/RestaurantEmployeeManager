@@ -21,7 +21,6 @@ public class SimpleEmployee implements Employee {
 		this.address = address;
 		this.birthday = birthday;
 		this.type = type;
-		this.addHoursWorked(0);
 		this.setSalary(type.getSalary());
 	}
 
@@ -32,7 +31,8 @@ public class SimpleEmployee implements Employee {
 		this.phone = other.getPhone();
 		this.address = other.getAddress();
 		this.birthday = other.getBirthday();
-		this.setSalary(other.getType().getSalary());
+		this.type = other.getType();
+		this.setSalary(this.type.getSalary());
 	}
 
 	public int getId() {

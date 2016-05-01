@@ -17,7 +17,7 @@ public class SalaryCalculatorVisitor implements EmployeesVisitor {
 
 	@Override
 	public void visit(EmployeeWithBonus employeeWithBonus) {
-		total += employeeWithBonus.getHoursWorked() * employeeWithBonus.getSalary()
+		total += (employeeWithBonus.getHoursWorked() * employeeWithBonus.getSalary())
 				+ (employeeWithBonus.getBonus() * hoursToMonthes(employeeWithBonus.getHoursWorked()));
 	}
 

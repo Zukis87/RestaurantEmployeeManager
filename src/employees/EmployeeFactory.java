@@ -39,46 +39,4 @@ public class EmployeeFactory {
 			return null;
 		}
 	}
-	
-	public Employee changeEmployeeType(Employee employee, EmployeeType newType) {
-		switch (newType) {
-		case Bartender:
-		case Waiter:
-		case Cook:
-		case Hostess:
-		case Cleaner:
-			employee.setType(newType);
-			if (employee instanceof SimpleEmployee) {
-				return employee;
-			} else {
-				return new SimpleEmployee(employee);
-			}
-		case ShiftManager:
-			employee.setType(newType);
-			if (employee instanceof SimpleEmployee) {
-				return new ShiftManager(employee);
-			} else {
-				return new ShiftManager(new SimpleEmployee(employee));
-			}
-		case HostessManager:
-		case BarManager:
-			employee.setType(newType);
-			if (employee instanceof SimpleEmployee) {
-				return new EmployeeWithBonus(new ShiftManager(employee));
-			} else if (employee instanceof ShiftManager) {
-				return new EmployeeWithBonus(employee);
-			} else {
-				return employee;
-			}
-		case Chef:
-			chef.setFirstName(employee.getFirstName());
-			chef.setLastName(employee.getLastName());
-			chef.setPhone(employee.getPhone());
-			chef.setAddress(employee.getAddress());
-			chef.setBirthday(employee.getBirthday());
-			return chef;
-		default:
-			return null;
-		}
-	}
 }

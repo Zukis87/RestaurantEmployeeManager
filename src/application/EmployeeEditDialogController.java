@@ -77,13 +77,7 @@ public class EmployeeEditDialogController {
 		phoneField.setText(employee.getPhone());
 		birthdayField.setText(employee.getBirthday());
 		totalHoursField.setText(Double.toString(employee.getHoursWorked()));
-		List<EmployeeType> types = new ArrayList<>(Arrays.asList(EmployeeType.values()));
-		types.remove(EmployeeType.Chef);
-		typeCB.setItems(FXCollections.observableArrayList(types));
-		if(employee.getType().equals(EmployeeType.Chef)){
-			typeCB.setDisable(true);
-		}
-		typeCB.setValue(employee.getType());
+		typeCB.setDisable(true);
 		
 		// birthdayDatePicker = new DatePicker(LocalDate.now());
 	}
@@ -113,7 +107,6 @@ public class EmployeeEditDialogController {
 				employee.setPhone(phoneField.getText());
 				employee.setBirthday(birthdayField.getText());
 				employee.setHoursWorked(Double.parseDouble(totalHoursField.getText()));
-				employee = factory.changeEmployeeType(employee, typeCB.getValue());
 			}
 			okClicked = true;
 			dialogStage.close();
