@@ -62,6 +62,8 @@ public class ManagmantTabController {
 	private void initialize() {
 		// Initialize the employee table with the two columns.
 		employeeTypeComboBox.setItems(FXCollections.observableArrayList(EmployeeType.values()));
+		allEmployeesLable.setText("");
+		employeeByTypeLable.setText("");
 		nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFullName()));
 		typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().name()));
 		// Clear employee details.
