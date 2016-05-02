@@ -26,13 +26,67 @@ public class MainApp extends Application {
 
 	public MainApp() {
 		factory = EmployeeFactory.getInstance();
+		addDemoEmployees();
+
+	}
+
+	private void addDemoEmployees() {
 		employeeData.add(factory.createEmployee("Bill", "Foo", "0522443231", "SomeAddress 15 Herzliya", "03/01/1965",
 				EmployeeType.Chef));
 		employeeData.add(factory.createEmployee("Zuki", "Sarusi", "0523874254", "Arlozorov 33 Herzliya", "30/12/1987",
 				EmployeeType.BarManager));
 		employeeData.add(factory.createEmployee("Lolo", "Acid", "0522444454", "Arlozorov 1 Tel-Aviv", "03/02/1998",
 				EmployeeType.ShiftManager));
-
+		employeeData.add(factory.createEmployee("Anya", "Kurganevich", "0543332212", "SomeAddress 12 SomeCity", "03/02/1998",
+				EmployeeType.HostessManager));
+		employeeData.add(factory.createEmployee("Waiter", "1", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Waiter));
+		employeeData.add(factory.createEmployee("Waiter", "2", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Waiter));
+		employeeData.add(factory.createEmployee("Waiter", "3", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Waiter));
+		employeeData.add(factory.createEmployee("Waiter", "4", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Waiter));
+		employeeData.add(factory.createEmployee("Cleaner", "1", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cleaner));
+		employeeData.add(factory.createEmployee("Cleaner", "2", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cleaner));
+		employeeData.add(factory.createEmployee("Cleaner", "3", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cleaner));
+		employeeData.add(factory.createEmployee("Cleaner", "4", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cleaner));
+		employeeData.add(factory.createEmployee("Bartender", "1", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Bartender));
+		employeeData.add(factory.createEmployee("Bartender", "2", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Bartender));
+		employeeData.add(factory.createEmployee("Bartender", "3", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Bartender));
+		employeeData.add(factory.createEmployee("Bartender", "4", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Bartender));
+		employeeData.add(factory.createEmployee("Hostess", "1", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Hostess));
+		employeeData.add(factory.createEmployee("Hostess", "2", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Hostess));
+		employeeData.add(factory.createEmployee("Hostess", "3", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Hostess));
+		employeeData.add(factory.createEmployee("Hostess", "4", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Hostess));
+		employeeData.add(factory.createEmployee("Cook", "1", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cook));
+		employeeData.add(factory.createEmployee("Cook", "2", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cook));
+		employeeData.add(factory.createEmployee("Cook", "3", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cook));
+		employeeData.add(factory.createEmployee("Cook", "4", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.Cook));
+		employeeData.add(factory.createEmployee("Shift", "Manager1", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.ShiftManager));
+		employeeData.add(factory.createEmployee("Shift", "Manager2", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.ShiftManager));
+		employeeData.add(factory.createEmployee("Shift", "Manager3", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.ShiftManager));
+		employeeData.add(factory.createEmployee("Shift", "Manager4", "0000000000", "SomeAddress SomeCity", "01/01/1991",
+				EmployeeType.ShiftManager));
 	}
 
 	@Override
