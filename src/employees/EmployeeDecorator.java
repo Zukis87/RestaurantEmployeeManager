@@ -2,7 +2,8 @@ package employees;
 
 public abstract class EmployeeDecorator implements Employee{
 	protected Employee employeeToBeDecorated;
-
+	//all the following methods are necessary so the decorator could use the decorated object methods
+	// as if he was actually the object.
 	public EmployeeDecorator(Employee employeeToBeDecorated){
 		this.employeeToBeDecorated = employeeToBeDecorated;
 	}

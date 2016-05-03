@@ -1,5 +1,6 @@
 package employees;
 
+//the singleton pattern
 public class Chef implements Employee {
 	private static Chef chef = new Chef();
 	private int id = 1;
@@ -11,7 +12,7 @@ public class Chef implements Employee {
 	private double totalHoursWorked;
 	private EmployeeType type = EmployeeType.Chef;
 	private double salary = type.getSalary();
-
+//lots of duplicated code because the singleton can't extend any class
 	private Chef() {
 	}
 

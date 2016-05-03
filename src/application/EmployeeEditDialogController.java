@@ -31,13 +31,12 @@ public class EmployeeEditDialogController {
 	private TextField birthdayField;
 	@FXML
 	private TextField totalHoursField;
-	// private DatePicker birthdayDatePicker;
 
 	private Stage dialogStage;
 	private Employee employee;
 	private boolean okClicked = false;
 	private boolean isNew = false;
-	private EmployeeFactory factory = EmployeeFactory.getInstance();
+	private EmployeeFactory factory = EmployeeFactory.getInstance(); //an instance of the factory to create new employees
 
 	/**
 	 * Initializes the controller class. This method is automatically called
@@ -65,8 +64,8 @@ public class EmployeeEditDialogController {
 		isNew = true;
 		List<EmployeeType> types = new ArrayList<>(Arrays.asList(EmployeeType.values()));
 		types.remove(EmployeeType.Chef);
-		totalHoursField.setDisable(true);
 		typeCB.setItems(FXCollections.observableArrayList(types));
+		totalHoursField.setDisable(true);
 	}
 
 	public void setEmployee(Employee employee) {
@@ -77,9 +76,14 @@ public class EmployeeEditDialogController {
 		phoneField.setText(employee.getPhone());
 		birthdayField.setText(employee.getBirthday());
 		totalHoursField.setText(Double.toString(employee.getHoursWorked()));
-		typeCB.setDisable(true);
-		
-		// birthdayDatePicker = new DatePicker(LocalDate.now());
+		List<EmployeeType> types = new ArrayList<>(Arrays.asList(EmployeeType.values()));
+		types.remove(EmployeeType.Chef);
+		typeCB.setItems(FXCollections.observableArrayList(types));
+		if(employee.getType().equals(EmployeeType.Chef)){
+			typeCB.setDisable(true);
+		}else{
+			typeCB.setDisable(false);
+		}
 	}
 
 	/**
@@ -97,7 +101,7 @@ public class EmployeeEditDialogController {
 	@FXML
 	private void handleOk() {
 		if (isInputValid()) {
-			if (isNew) {
+			if (isNew) { //we can see how convenient is to create an employee with the factory:
 				employee = factory.createEmployee(firstNameField.getText(), lastNameField.getText(), phoneField.getText(),
 						addressField.getText(), birthdayField.getText(), typeCB.getValue());
 			} else {
@@ -136,14 +140,17 @@ public class EmployeeEditDialogController {
 			errorMessage += "No valid last name!\n";
 		}
 		if (isEmptyText(addressField)) {
-			errorMessage += "No valid Address!\n";
+			errorMessage += "No valid address!\n";
 		}
 
 		if (isEmptyText(phoneField)) {
-			errorMessage += "No valid Phone Number!\n";
+			errorMessage += "No valid phone number!\n";
 		}
 		if (isEmptyText(birthdayField)) {
 			errorMessage += "No valid birthday!\n";
+		}
+		if (isEmptyText(totalHoursField)) {
+			errorMessage += "No valid hours!\n";
 		}
 		if (typeCB.getValue() == null) {
 			errorMessage += "No type Selected!\n";

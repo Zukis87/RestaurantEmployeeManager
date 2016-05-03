@@ -41,7 +41,7 @@ public interface Employee {
 	public void setHoursWorked(double hoursWorked);
 	
 	public void addHoursWorked(double hoursWorked);
-
+//method to implement the acceptance of the visitor:
 	public void acceptEmployeeVisitor(EmployeesVisitor visitor);
 
 }

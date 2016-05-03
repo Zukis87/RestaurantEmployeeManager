@@ -170,8 +170,8 @@ public class ManagmantTabController {
 			alertNoSelection();
 		}
 	}
-
-	public int getAllEmployeesSalary() {
+	//the usage of the SalaryCalculatorVisitor:
+	public int getAllEmployeesSalary() { 
 		SalaryCalculatorVisitor visitor = new SalaryCalculatorVisitor();
 		if (mainApp.getEmployeeData() != null) {
 			for (Employee employee : mainApp.getEmployeeData()) {
